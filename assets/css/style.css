@@ -11,14 +11,11 @@ body {
         oklch(0.511 0.262 276.966) 0%,
         oklch(0.558 0.288 302.321) 100%);
 }
-/* التشطيب على النص */
 .text-decoration-line-through {
   text-decoration: line-through !important;
   opacity: 0.6;
-  /* بيخلي الكلام باهت شوية عشان يبان إنه خلص */
 }
 
-/* لون الـ DONE badge لو مش مستخدم Bootstrap 5 */
 .bg-success-subtle {
   background-color: #d1fae5 !important;
   color: #065f46 !important;
@@ -87,9 +84,7 @@ h2 {
 
 .content i {
   margin-bottom: .75rem;
-  /* color: oklch(0.704 0.04 256.788); */
   font-size: 2.25rem;
-  /* opacity: 0.5; */
 }
 
 .content p {
