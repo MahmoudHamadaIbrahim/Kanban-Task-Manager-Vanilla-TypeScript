@@ -2,7 +2,7 @@
 A professional, responsive Kanban Board application built with TypeScript, HTML5, and CSS3. This project helps users manage their daily tasks efficiently through an intuitive drag-and-drop-like interface with real-time status updates.
 
 🚀 Live Demo
-https://kanban-task-manager-mahmoud-hamada.vercel.app
+https://kanban-manager-vanilla-ts-mahmoud-hamada.vercel.app/
 
 ✨ Features
 Task Management: Create, edit, and delete tasks with ease.
