@@ -1,0 +1,338 @@
+body {
+  background-color: #f8faff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.custom-nav {
+  background-image: linear-gradient(to right,
+        oklch(0.511 0.262 276.966) 0%,
+        oklch(0.558 0.288 302.321) 100%);
+}
+/* التشطيب على النص */
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+  opacity: 0.6;
+  /* بيخلي الكلام باهت شوية عشان يبان إنه خلص */
+}
+
+/* لون الـ DONE badge لو مش مستخدم Bootstrap 5 */
+.bg-success-subtle {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+  border: 1px solid #10b981;
+}
+
+
+.add-btn {
+  border: none;
+  background-color: oklab(0.999994 0.0000455678 0.0000200868 / 0.2);
+  border-radius: 8px;
+  color: white !important;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn:hover {
+  background-color: oklab(0.999994 0.0000455678 0.0000200868 / 0.3);
+}
+
+.card {
+  padding: 20px;
+  height: 100%;
+  border: 1px solid oklab(0.929 -0.00325318 -0.0125864 / 0.5);
+  background-color: oklab(0.999994 0.0000455677 0.0000200868 / 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 500px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-color: oklch(0.968 0.007 247.896);
+  border-radius: 12px;
+}
+
+.icon i {
+  color: oklch(0.554 0.046 257.417);
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  display: block;
+}
+
+h2 {
+  color: oklch(0.279 0.041 260.031);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.tasks {
+  color: oklch(0.704 0.04 256.788);
+  font-size: .75rem;
+  margin-bottom: 0;
+}
+
+.content i {
+  margin-bottom: .75rem;
+  /* color: oklch(0.704 0.04 256.788); */
+  font-size: 2.25rem;
+  /* opacity: 0.5; */
+}
+
+.content p {
+  color: oklch(0.704 0.04 256.788);
+  font-size: .875rem;
+  margin: 0;
+}
+
+.bgprogress {
+  background-color: oklch(0.987 0.022 95.277);
+}
+
+.bgprogress i {
+  color: oklch(0.769 0.188 70.08);
+}
+
+.bgcompleted {
+  background-color: oklch(0.979 0.021 166.113);
+}
+
+.bgcompleted i {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.task {
+  border-radius: 12px;
+  padding: 12px;
+  border: 0.8px solid oklch(0.968 0.007 247.896);
+  margin-bottom: 12px;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  transition: all 0.3s;
+}
+
+.task:hover {
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px -1px !important;
+}
+
+.top-par {
+  margin-bottom: 6px;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  background-color: oklch(0.869 0.022 252.894);
+}
+
+.index {
+  color: oklch(0.704 0.04 256.788);
+  font-size: 10px;
+}
+
+.btns {
+  opacity: 0;
+}
+
+.task:hover .btns {
+  opacity: 100;
+}
+
+.edit-btn {
+  border-radius: 8px;
+  color: oklch(0.704 0.04 256.788);
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #EEF2FF;
+}
+
+.edit-btn:hover i {
+  color: #615FFF;
+}
+
+.edit-btn i {
+  font-size: 12px;
+}
+
+.delete-btn i {
+  font-size: 12px;
+}
+
+.delete-btn {
+  border-radius: 8px;
+  color: oklch(0.704 0.04 256.788);
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+.delete-btn:hover {
+  background-color: #FEF2F2;
+}
+
+.delete-btn:hover i {
+  color: #FB2C36;
+}
+
+.task-title {
+  color: oklch(0.279 0.041 260.031);
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.task-description {
+  margin-bottom: 8px;
+  color: oklch(0.554 0.046 257.417);
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.tags {
+  margin-bottom: 8px;
+}
+
+.priority {
+  padding: 4px 8px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.priority.high {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.priority.medium {
+  background-color: oklch(0.987 0.022 95.277);
+  color: oklch(0.666 0.179 58.318);
+}
+
+.priority.low {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.priority.overdue {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.priority.due-soon {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+
+.priority .rounded-circle {
+  width: 6px;
+  height: 6px;
+  background-color: oklch(0.769 0.188 70.08);
+  color: oklch(0.666 0.179 58.318);
+  margin-right: 4px;
+}
+
+.due-soon {
+  background-color: oklch(0.954 0.038 75.164);
+  color: oklch(0.646 0.222 41.116);
+}
+
+.meta-info {
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.date {
+  color: oklch(0.705 0.213 47.604);
+}
+
+.createdat {
+  color: oklch(0.704 0.04 256.788);
+}
+
+.status-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bgstart {
+  background-color: oklch(0.962 0.059 95.617);
+  color: oklch(0.555 0.163 48.998);
+  transition: all 0.3s;
+}
+
+.bgstart:hover {
+  background-color: oklch(0.942 0.12 95.746);
+  color: oklch(0.555 0.163 48.998);
+  transform: scale(1.1);
+}
+
+.bgcomplete {
+  background-color: oklch(0.95 0.052 163.051);
+  color: oklch(0.508 0.118 165.612);
+  transition: all 0.3s;
+}
+
+.bgcomplete:hover {
+  background-color: oklch(0.905 0.093 164.15);
+  color: oklch(0.508 0.118 165.612);
+  transform: scale(1.1);
+}
+
+
+.bgtodo {
+  background-color: #E9EDF4;
+  color: #667284;
+  transition: all 0.3s;
+}
+.bgtodo:hover{
+  background-color: #E9EDF4;
+  color:#767290;
+  transform: scale(1.1);
+}
+
+footer {
+  background-image: linear-gradient(to right,
+      oklch(0.279 0.041 260.031) 0%,
+      oklch(0.208 0.042 265.755) 100%);
+
+  padding-block: 20px;
+}
+
+footer p {
+  font-size: 14px;
+  color: oklch(0.704 0.04 256.788);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+footer i {
+  color: oklch(0.655 0.212 29.998);
+}

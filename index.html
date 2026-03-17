@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Kanban</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar custom-nav p-3 mb-5">
+        <div class="container-fluid container-lg d-flex justify-content-between align-items-center">
+            <div class="navbar-brand text-white fw-bold">
+                <i class="fa-solid fa-columns me-2"></i> Kanban
+            </div>
+            <button onclick="taskManager.prepareForAdd()" class="btn btn-light add-btn text-primary"
+                data-bs-toggle="modal" data-bs-target="#taskModal"">
+                <i class=" fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-fluid container-lg mb-5 px-2">
+        <div class="row mx-auto justify-content-center g-4">
+
+            <div class="col-12 col-md-4 g-4">
+                <div class="card">
+                    <div class="d-flex align-items-center gap-3 title">
+                        <div class="d-flex justify-content-center align-items-center icon">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2>To Do</h2>
+                            <p class="tasks" id="todo-count">{{todoTasks.length}} tasks</p>
+                        </div>
+                    </div>
+                    <div id="todoTasks" class="d-flex flex-column overflow-y-auto pe-1">
+                        <div class=" d-flex flex-column align-items-center justify-content-center py-5 content">
+                            <i class="fa-regular fa-folder-open opacity-50"></i>
+                            <p>No tasks yet</p>
+                            <p class="mt-1">Click + to add one</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-4 g-4">
+                <div class="card">
+                    <div class="d-flex align-items-center gap-3 title">
+                        <div class="d-flex justify-content-center align-items-center icon bgprogress">
+                            <i class="fa-solid fa-spinner text-amber-500 text-lg"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2>In Progress</h2>
+                            <p class="tasks" id="progress-count">{{inProgressTasks.length}} tasks</p>
+                        </div>
+                    </div>
+                    <div id="progressTasks" class="d-flex flex-column overflow-y-auto pe-1">
+                        <div class=" d-flex flex-column align-items-center justify-content-center py-5 content">
+                            <i class="fa-regular fa-folder-open opacity-50"></i>
+                            <p>No tasks yet</p>
+                            <p class="mt-1">Click + to add one</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 g-4">
+                <div class="card">
+                    <div class="d-flex align-items-center gap-3 title">
+                        <div class="d-flex justify-content-center align-items-center icon bgcompleted">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2>Completed</h2>
+                            <p class="tasks" id="completed-count">{{completedTasks.length}} tasks</p>
+                        </div>
+                    </div>
+                    <div id="completedTasks" class="d-flex flex-column overflow-y-auto pe-1">
+                        <div class=" d-flex flex-column align-items-center justify-content-center py-5 content">
+                            <i class="fa-regular fa-folder-open opacity-50"></i>
+                            <p>No tasks yet</p>
+                            <p class="mt-1">Click + to add one</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="text-center mt-auto border-top">
+        <p class="d-flex align-items-center justify-content-center gap-2">
+            Made with <i class="fa-solid fa-heart animate-pulse"></i> by Route Academy
+        </p>
+    </footer>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="taskModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-4 shadow border-0">
+
+                <div class="modal-header border-bottom-0 pt-4 px-4">
+                    <h5 class="modal-title d-flex align-items-center gap-2 fw-bold">
+                        Create New Task
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form id="task-form">
+                    <div class="modal-body px-4">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                <i class="fa-solid fa-heading text-muted me-1"></i>
+                                Task Title <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" id="title" class="form-control shadow-sm" required
+                                placeholder="What needs to be done?">
+                            <div id="title-error" class="text-danger small mt-1 d-none">Task title is required
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-solid fa-flag text-muted me-1"></i>
+                                    Priority
+                                </label>
+                                <select id="priority" class="form-select shadow-sm">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-regular fa-calendar text-muted me-1"></i>
+                                    Due Date
+                                </label>
+                                <input type="date" id="dueDate" class="form-control shadow-sm">
+                                <div id="date-error" class="text-danger small mt-1 d-none">Due date cannot be in
+                                    the
+                                    past
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                <i class="fa-solid fa-align-left text-muted me-1"></i>
+                                Description
+                            </label>
+                            <textarea id="description" class="form-control shadow-sm" rows="3"
+                                placeholder="Add more details about this task..." maxlength="500"></textarea>
+
+                            <div class="d-flex justify-content-between mt-1">
+                                <div id="desc-error" class="text-danger small d-none">Description too long</div>
+                                <small class="text-muted ms-auto" id="char-count">0 / 500</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer border-top-0 pb-4 px-4">
+                        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary d-flex align-items-center gap-2 px-4 shadow">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
